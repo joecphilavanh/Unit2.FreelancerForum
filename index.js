@@ -23,8 +23,7 @@ function displayNextFreelancer() {
   liElement.textContent = `Name: ${freelancer.name}, Occupation: ${freelancer.occupation}, Starting Price: $${freelancer.price}`;
   list.appendChild(liElement);
   const averagePrice = freelancers
-    .slice(0, currentLine + 1)
-    .reduce((total, freelancer) => total + freelancer.price, 0) / (currentLine + 1);
+    .slice(0, currentLine + 1) .reduce((total, freelancer) => total + freelancer.price, 0) / (currentLine + 1);
   averagePriceElement.textContent = `$${averagePrice.toFixed(2)}`;
   currentLine++;
 }
