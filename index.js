@@ -10,28 +10,23 @@ const freelancers = [
 ];
 
 let currentLine = 0;
-
 function displayNextFreelancer() {
-  const ulElement = document.getElementById("freelancer-list");
+  const list = document.getElementById("freelancer-list");
   const averagePriceElement = document.getElementById("average-price");
 
   if (currentLine >= freelancers.length) {
     clearInterval(intervals);
     return;
   }
-
   const freelancer = freelancers[currentLine];
   const liElement = document.createElement("li");
   liElement.textContent = `Name: ${freelancer.name}, Occupation: ${freelancer.occupation}, Starting Price: $${freelancer.price}`;
-  ulElement.appendChild(liElement);
-
+  list.appendChild(liElement);
   const averagePrice = freelancers
     .slice(0, currentLine + 1)
     .reduce((total, freelancer) => total + freelancer.price, 0) / (currentLine + 1);
-
   averagePriceElement.textContent = `$${averagePrice.toFixed(2)}`;
   currentLine++;
 }
-
 const intervals = setInterval(displayNextFreelancer, 1000);
 displayNextFreelancer();
